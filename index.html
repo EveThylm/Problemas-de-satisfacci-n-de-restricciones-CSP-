@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador CSP - Asignación de Tareas</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Simulador CSP - Asignación de Tareas</h1>
+    </header>
+
+    <main class="main-container">
+        <!-- Panel izquierdo -->
+        <aside class="left-panel">
+            <section class="panel-section">
+                <h2>Personas y Tareas</h2>
+                <div id="variables-container"></div>
+                <button id="add-variable-btn" class="btn btn-secondary">+ Agregar Persona</button>
+            </section>
+
+            <section class="panel-section">
+                <h2>Información del Problema</h2>
+                <div id="problem-info">
+                    <div class="info-row">
+                        <span class="info-label">Variables:</span>
+                        <span id="info-variables">3</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Dominios:</span>
+                        <span id="info-domains">3</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Restricciones:</span>
+                        <span id="info-constraints">6</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Algoritmo:</span>
+                        <span id="info-algorithm">Backtracking</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="panel-section">
+                <h2>Acciones</h2>
+                <div class="button-group">
+                    <button id="solve-btn" class="btn btn-primary">Resolver</button>
+                    <button id="step-btn" class="btn btn-secondary">Paso a Paso</button>
+                    <button id="reset-btn" class="btn btn-danger">Reiniciar</button>
+                </div>
+            </section>
+        </aside>
+
+        <!-- Panel derecho -->
+        <section class="right-panel">
+            <div class="tree-header">
+                <h2>Árbol de Búsqueda</h2>
+                <div class="tree-controls">
+                    <button id="zoom-reset-btn" class="btn btn-small" title="Restablecer vista">⟲</button>
+                    <span class="zoom-info">Scroll para zoom · Arrastrar para mover</span>
+                </div>
+            </div>
+            <div id="tree-container"></div>
+        </section>
+    </main>
+
+    <!-- Consola de ejecución -->
+    <footer class="console-panel">
+        <h3>Consola de Ejecución</h3>
+        <div id="console-output"></div>
+    </footer>
+
+    <!-- Soluciones encontradas -->
+    <div id="solutions-panel" class="solutions-panel hidden">
+        <h3>Soluciones Encontradas: <span id="solutions-count">0</span></h3>
+        <div id="solutions-list"></div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/csp.js"></script>
+    <script src="js/backtracking.js"></script>
+    <script src="js/tree.js"></script>
+    <script src="js/animation.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

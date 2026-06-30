@@ -1,0 +1,41 @@
+{
+    "examples": [
+        {
+            "name": "Problema Original",
+            "description": "3 personas, 3 tareas con restricciones iniciales",
+            "variables": [
+                { "name": "Ana", "tasks": ["T1", "T2"] },
+                { "name": "Luis", "tasks": ["T1", "T3"] },
+                { "name": "Carlos", "tasks": ["T2", "T3"] }
+            ]
+        },
+        {
+            "name": "Sin Restricciones",
+            "description": "3 personas, 3 tareas sin restricciones adicionales",
+            "variables": [
+                { "name": "Ana", "tasks": ["T1", "T2", "T3"] },
+                { "name": "Luis", "tasks": ["T1", "T2", "T3"] },
+                { "name": "Carlos", "tasks": ["T1", "T2", "T3"] }
+            ]
+        },
+        {
+            "name": "Restricción Extrema",
+            "description": "3 personas con dominios muy reducidos",
+            "variables": [
+                { "name": "Ana", "tasks": ["T1"] },
+                { "name": "Luis", "tasks": ["T2"] },
+                { "name": "Carlos", "tasks": ["T3"] }
+            ]
+        },
+        {
+            "name": "4 Personas",
+            "description": "Problema ampliado con 4 personas y 4 tareas",
+            "variables": [
+                { "name": "Ana", "tasks": ["T1", "T2"] },
+                { "name": "Luis", "tasks": ["T2", "T3"] },
+                { "name": "Carlos", "tasks": ["T3", "T4"] },
+                { "name": "María", "tasks": ["T1", "T4"] }
+            ]
+        }
+    ]
+}

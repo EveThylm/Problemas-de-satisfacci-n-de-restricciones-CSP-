@@ -1,0 +1,387 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #3498db;
+    --color-secondary: #2ecc71;
+    --color-danger: #e74c3c;
+    --color-warning: #f39c12;
+    --color-dark: #2c3e50;
+    --color-light: #ecf0f1;
+    --color-gray: #95a5a6;
+    --color-node-unexplored: #bdc3c7;
+    --color-node-exploring: #3498db;
+    --color-node-solution: #2ecc71;
+    --color-node-violated: #e74c3c;
+    --color-node-discarded: #2c3e50;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-light);
+    color: var(--color-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: var(--color-dark);
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 320px;
+    background-color: white;
+    border-right: 1px solid var(--color-gray);
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.tree-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.tree-header h2 {
+    color: var(--color-dark);
+    margin: 0;
+}
+
+.tree-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-small {
+    padding: 0.4rem 0.75rem;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    background-color: var(--color-light);
+    border: 1px solid var(--color-gray);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-small:hover {
+    background-color: var(--color-gray);
+}
+
+.zoom-info {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+.panel-section {
+    margin-bottom: 1.5rem;
+}
+
+.panel-section h2 {
+    font-size: 1rem;
+    color: var(--color-dark);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.variable-card {
+    background-color: var(--color-light);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.variable-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-dark);
+}
+
+.variable-card .remove-var {
+    float: right;
+    background: none;
+    border: none;
+    color: var(--color-danger);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-light);
+}
+
+.info-label {
+    font-weight: 500;
+    color: var(--color-gray);
+}
+
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.btn {
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-secondary {
+    background-color: var(--color-gray);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#tree-container {
+    flex: 1;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray);
+    overflow: hidden;
+    position: relative;
+}
+
+#tree-container svg {
+    width: 100%;
+    height: 100%;
+}
+
+.console-panel {
+    background-color: var(--color-dark);
+    color: white;
+    padding: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.console-panel h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+#console-output {
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.console-entry {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.console-entry.error {
+    color: var(--color-danger);
+}
+
+.console-entry.success {
+    color: var(--color-secondary);
+}
+
+.console-entry.warning {
+    color: var(--color-warning);
+}
+
+.solutions-panel {
+    background-color: white;
+    border-top: 2px solid var(--color-secondary);
+    padding: 1rem;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.solutions-panel.hidden {
+    display: none;
+}
+
+.solutions-panel h3 {
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+}
+
+.solution-card {
+    background-color: var(--color-light);
+    border-radius: 6px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.solution-card h4 {
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+
+.solution-assignment {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+}
+
+.solution-assignment .arrow {
+    color: var(--color-gray);
+}
+
+/* Tree node styles */
+.tree-node {
+    cursor: pointer;
+}
+
+.tree-node circle {
+    stroke-width: 2px;
+    transition: fill 0.3s;
+}
+
+.tree-node text {
+    font-size: 11px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    fill: white;
+}
+
+.node-unexplored text {
+    fill: var(--color-dark);
+}
+
+.tree-link {
+    fill: none;
+    stroke: var(--color-gray);
+    stroke-width: 2px;
+}
+
+/* Node colors */
+.node-unexplored circle {
+    fill: var(--color-node-unexplored);
+    stroke: #95a5a6;
+}
+
+.node-exploring circle {
+    fill: var(--color-node-exploring);
+    stroke: #2980b9;
+}
+
+.node-solution circle {
+    fill: var(--color-node-solution);
+    stroke: #27ae60;
+}
+
+.node-violated circle {
+    fill: var(--color-node-violated);
+    stroke: #c0392b;
+}
+
+.node-discarded circle {
+    fill: var(--color-node-discarded);
+    stroke: #1a252f;
+}
+
+/* Animation classes */
+.node-highlight {
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
